@@ -1,19 +1,22 @@
-<div class="jumbotron" ng-init="initialize()">
-    <div class="row">
-        <div class="col-md-8">
-            <h3>{{randomQuestion.question}}</h3>
-            <button class="btn btn-primary" role="button" data-toggle="collapse" href="#answer" aria-expanded="false" aria-controls="answer">Show me the answer</button>
-            <div class="collapse" id="answer">
-                <div class="panel panel-default">
-                    <div class="panel-body">{{randomQuestion.answer}}</div>
-                </div>
+<!-- The variables involved here are all attached to $scope in the controller -->
+<div class="row" ng-init="initialize()">
+    <div class="col-md-8">
+        <div ng-bind-html="randomQuestion.question"></div>
+        <button class="btn btn-primary" role="button" ng-click="answerIsShowing = !answerIsShowing">Show me the answer</button>
+        <div ng-show="answerIsShowing" id="answer">
+            <div class="panel panel-default">
+                <div class="panel-body">{{randomQuestion.answer}}</div>
             </div>
         </div>
-        <div class="col-md-4">
-            <p>Air date: {{randomQuestion.air_date}} for show number {{randomQuestion.show_number}}</p>
-            <p>Category: {{randomQuestion.category}}</p>
-            <p>Value: {{randomQuestion.value}}</p>
-        </div>
+    </div>
+    <div class="col-md-4">
+        <p>Air date: {{randomQuestion.air_date}} for show number {{randomQuestion.show_number}}</p>
+        <p>Category: {{randomQuestion.category}}</p>
+        <p>Value: {{randomQuestion.value}}</p>
     </div>
 </div>
-<button class="btn btn-primary" role="button" ng-click="generateQuestion()">Generate Another Question</button>
+<div class="row">
+    <p>Current Score: {{currentScore}}</p>
+    <button class="btn btn-primary" role="button" ng-click="addToScore()" ng-disabled="alreadySeenQuestion">I got it right!</button>
+    <button class="btn btn-primary" role="button" ng-click="generateQuestion()">Generate Another Question</button>
+</div>

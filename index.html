@@ -7,9 +7,12 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.min.js"></script>
     <script src="js/app.js"></script>
 </header>
+<!-- We declare the main app here. This way, angularjs knows we are using the angular app structure -->
 <body ng-app="jeopardyApp">
+    <!-- navigate to all the views -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -24,11 +27,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#/random">Random</a></li>
-                    <li><a href="#/search">Search</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- This is where the view will actually get rendered. -->
     <div class="row">
         <div class="col-md-10 col-md-offset-1" ng-view></div>
     </div>

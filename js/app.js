@@ -101,6 +101,11 @@ angular.module('jeopardyApp', ['ngRoute', 'ngSanitize'])
     };
 }])
 
+/**
+ * $routeParams is a service that stores the parameter that we pass in through the url. In this
+ * case, we have a parameter called id. So $routeParams has a id attribute. And we can access
+ * that and determine what question to return back. 
+ */
 .controller('DetailController', ['$scope', '$routeParams', 'QuestionService', function($scope, $routeParams, QuestionService) {
     $scope.initialize = function() {
         QuestionService.getQuestionData()
@@ -108,6 +113,7 @@ angular.module('jeopardyApp', ['ngRoute', 'ngSanitize'])
                 $scope.allQuestions = response.data;
                 $scope.questionNumber = parseInt($routeParams.id);
                 $scope.question = $scope.allQuestions[$scope.questionNumber];
+                $scope.answerIsShowing = false;
             })
             .catch(function() {
                 $scope.errorMessage = 'Unable to load question data';

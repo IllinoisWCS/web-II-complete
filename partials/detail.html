@@ -1,8 +1,9 @@
+<!-- The variables involved here are all attached to $scope in the controller -->
 <div class="row" ng-init="initialize()">
     <div class="col-md-8">
-        <h3>{{question.question}}</h3>
-        <button class="btn btn-primary" role="button" data-toggle="collapse" href="#answer" aria-expanded="false" aria-controls="answer">Show me the answer</button>
-        <div class="collapse" id="answer">
+        <div ng-bind-html="question.question"></div>
+        <button class="btn btn-primary" role="button" ng-click="answerIsShowing = !answerIsShowing">Show me the answer</button>
+        <div ng-show="answerIsShowing" id="answer">
             <div class="panel panel-default">
                 <div class="panel-body">{{question.answer}}</div>
             </div>
